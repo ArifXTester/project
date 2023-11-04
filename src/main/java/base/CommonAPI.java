@@ -3,6 +3,7 @@ package base;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,9 +32,10 @@ import java.util.Date;
 import java.util.Properties;
 
 public class CommonAPI {
-    Logger LOG = LogManager.getLogger(CommonAPI.class.getName());
+    public Logger LOG = LogManager.getLogger(CommonAPI.class.getName());
     public Properties prop = Utility.loadProp();
     public WebDriver driver;
+    public static Logger logger;
     int implicitWait = Integer.parseInt(prop.getProperty("wait.time", "10"));
     String windowMaximize = prop.getProperty("window.maximize", "true");
     String username = prop.getProperty("browserstack.username");
@@ -116,7 +118,7 @@ public class CommonAPI {
     public void getLocalDriver(String browserName){
         if (browserName.equalsIgnoreCase("chrome")){
             //launch the browser
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             LOG.info("chrome browser launched");
         }else if (browserName.equalsIgnoreCase("firefox")){
             //launch the browser

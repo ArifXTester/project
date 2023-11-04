@@ -20,7 +20,7 @@ public class SignUpPage extends CommonAPI {
     WebElement sUsername;
 
     @FindBy(id = "sign-password")
-    WebElement sPassword;)
+    WebElement sPassword;
 
     @FindBy(xpath = "//button[text()='Sign up']")
     WebElement signUpBtn;
