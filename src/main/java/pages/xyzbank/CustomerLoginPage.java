@@ -1,2 +1,4 @@
-package pages.xyzbank;public class CustomerLoginPage {
+package pages.xyzbank;
+
+public class CustomerLoginPage {
 }

@@ -1,2 +1,4 @@
-package pages.xyzbank;public class OpenAccount {
+package pages.xyzbank;
+
+public class OpenAccount {
 }
