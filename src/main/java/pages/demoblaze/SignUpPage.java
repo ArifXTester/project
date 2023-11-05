@@ -12,7 +12,11 @@ import utility.Utility;
 
 public class SignUpPage extends CommonAPI {
     Logger LOG = LogManager.getLogger(HomePage.class.getName());
-    public SignUpPage(WebDriver driver){
+//    public SignUpPage(WebDriver driver){
+//        PageFactory.initElements(driver, this);
+//    }
+
+    public SignUpPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -32,6 +36,14 @@ public class SignUpPage extends CommonAPI {
     public void typePassword(String password){
         type(sPassword, password);
         LOG.info("type password success");
+    }
+
+
+    public void signUp(String un, String pwd)
+    {
+
+        Utility.sendKeys(driver, sUsername, un);
+        Utility.sendKeys(driver, sPassword, pwd);
     }
     public void clickOnLoginBtn() {
         clickOn(signUpBtn);

@@ -10,13 +10,7 @@ import pages.demoblaze.HomePage;
 public class HomePageTest extends CommonAPI {
     HomePage homePage;
 
-    @BeforeMethod
-    public void set() {
-        homePage = new HomePage(getDriver());
-        LOG.info("Initiating HomePage Constructor");
-    }
-
-    @Test
+     @Test
     public void verifyTitle() {
         try {
             Assert.assertEquals(homePage.validateHomePageTitle(), "STORE");
