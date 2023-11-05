@@ -1,2 +1,4 @@
-package pages.nopCommerce;public class checkoutPage {
+package pages.nopCommerce;
+
+public class checkoutPage {
 }

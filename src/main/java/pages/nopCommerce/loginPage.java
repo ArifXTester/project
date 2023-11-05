@@ -1,2 +1,4 @@
-package pages.nopCommerce;public class loginPage {
+package pages.nopCommerce;
+
+public class loginPage {
 }

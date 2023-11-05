@@ -1,2 +1,4 @@
-package pages.nopCommerce;public class productPage {
+package pages.nopCommerce;
+
+public class productPage {
 }
