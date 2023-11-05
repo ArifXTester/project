@@ -1,2 +1,4 @@
-package pages.xyzbank;public class Customers {
+package pages.xyzbank;
+
+public class Customers {
 }
