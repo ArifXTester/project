@@ -3,29 +3,27 @@ package demoblazetest;
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
-import saucedemotest.ValidLoginTest;
+import pages.demoblaze.LoginPage;
 import utility.ExcelReader;
 import utility.Utility;
 
 import java.io.File;
 
 public class LoginPageTest extends CommonAPI {
-    Logger LOG = LogManager.getLogger(ValidLoginTest.class.getName());
-    String user = prop.getProperty("username");
-    String pw = prop.getProperty("password");
-
+    LoginPage loginPage = new LoginPage(getDriver());
+    Logger LOG = LogManager.getLogger(LoginPageTest.class.getName());
+    String user = prop.getProperty("demouser");
+    String pw = prop.getProperty("demopass");
     @Test
     public void loginWithValidCredentials() {
-        pages.demoblaze.LoginPage logging = new pages.demoblaze.LoginPage();
 
 
-        logging.typeUser(user);
-        logging.typePassword(pw);
-        logging.clickOnLoginBtn();
+        loginPage.typeUser(user);
+        loginPage.typePassword(pw);
+        loginPage.clickOnLoginBtn();
     }
 }
 

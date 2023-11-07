@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -60,6 +59,7 @@ public class CommonAPI {
         ExtentTestManager.startTest(method.getName());
         ExtentTestManager.getTest().assignCategory(className);
     }
+
     protected String getStackTrace(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -92,6 +92,7 @@ public class CommonAPI {
 //        }
         driver.quit();
     }
+
     @AfterSuite
     public void generateReport() {
         extent.close();
@@ -108,43 +109,43 @@ public class CommonAPI {
         cap.setCapability("os", os);
         cap.setCapability("os_version", osVersion);
         cap.setCapability("browser", browserName);
-        if (envName.equalsIgnoreCase("browserstack")){
+        if (envName.equalsIgnoreCase("browserstack")) {
             cap.setCapability("browser_version", browserVersion);
-            driver = new RemoteWebDriver(new URL("http://"+username+":"+password+"@hub-cloud.browserstack.com:80/wd/hub"), cap);
-        }else if (envName.equalsIgnoreCase("saucelabs")){
-            driver = new RemoteWebDriver(new URL("http://"+username+":"+password+"@ondemand.saucelabs.com:80/wd/hub"), cap);
+            driver = new RemoteWebDriver(new URL("http://" + username + ":" + password + "@hub-cloud.browserstack.com:80/wd/hub"), cap);
+        } else if (envName.equalsIgnoreCase("saucelabs")) {
+            driver = new RemoteWebDriver(new URL("http://" + username + ":" + password + "@ondemand.saucelabs.com:80/wd/hub"), cap);
         }
     }
-    public void getLocalDriver(String browserName){
-        if (browserName.equalsIgnoreCase("chrome")){
+
+    public void getLocalDriver(String browserName) {
+        if (browserName.equalsIgnoreCase("chrome")) {
             //launch the browser
             driver = new FirefoxDriver();
             LOG.info("chrome browser launched");
-        }else if (browserName.equalsIgnoreCase("firefox")){
+        } else if (browserName.equalsIgnoreCase("firefox")) {
             //launch the browser
             driver = new FirefoxDriver();
             LOG.info("firefox browser launched");
             System.out.println();
-        }else if (browserName.equalsIgnoreCase("edge")){
+        } else if (browserName.equalsIgnoreCase("edge")) {
             //launch the browser
             driver = new EdgeDriver();
             LOG.info("edge browser launched");
         }
     }
 
-    @Parameters({"useCloudEnv","envName","os","osVersion","browserName","browserVersion","url"})
+    @Parameters({"useCloudEnv", "envName", "os", "osVersion", "browserName", "browserVersion", "url"})
     @BeforeMethod
-    public  void setUp(@Optional("false") boolean useCloudEnv, @Optional("browserstack") String envName, @Optional("windows") String os,
-                       @Optional("10") String osVersion, @Optional("chrome") String browserName, @Optional("110") String browserVersion,
-                       @Optional("https://www.google.com") String url) throws MalformedURLException
-    {
-        if (useCloudEnv){
+    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("browserstack") String envName, @Optional("windows") String os,
+                      @Optional("10") String osVersion, @Optional("chrome") String browserName, @Optional("110") String browserVersion,
+                      @Optional("https://www.google.com") String url) throws MalformedURLException {
+        if (useCloudEnv) {
             getCloudDriver(os, osVersion, browserName, browserVersion, envName);
-        }else {
+        } else {
             getLocalDriver(browserName);
         }
         //Maximize window
-        if(windowMaximize.equalsIgnoreCase("true")){
+        if (windowMaximize.equalsIgnoreCase("true")) {
             driver.manage().window().maximize();
             LOG.info("window maximize");
         }
@@ -155,7 +156,7 @@ public class CommonAPI {
 
         // Navigate to the website
         driver.get(url);
-        LOG.info("navigate to "+url+" ...");
+        LOG.info("navigate to " + url + " ...");
     }
     //------------------------------------------------------------------------------------------------------------------
     //reusable methods (non page object model methods)
@@ -165,81 +166,92 @@ public class CommonAPI {
         return driver;
     }
 
-    public String getCurrentTitle(){
+    public String getCurrentTitle() {
         return driver.getTitle();
     }
-    public String getElementTextNPOM(String cssOrXpath){
+
+    public String getElementTextNPOM(String cssOrXpath) {
         try {
             return driver.findElement(By.cssSelector(cssOrXpath)).getText();
-        }catch (Exception e){
+        } catch (Exception e) {
             return driver.findElement(By.xpath(cssOrXpath)).getText();
         }
     }
-    public void clickOnNPOM(String cssOrXpath){
+
+    public void clickOnNPOM(String cssOrXpath) {
         try {
             driver.findElement(By.cssSelector(cssOrXpath)).click();
-        }catch (Exception e){
+        } catch (Exception e) {
             driver.findElement(By.xpath(cssOrXpath)).click();
         }
     }
-    public void typeNPOM(String cssOrXpath, String text){
+
+    public void typeNPOM(String cssOrXpath, String text) {
         try {
             driver.findElement(By.cssSelector(cssOrXpath)).sendKeys(text);
-        }catch (Exception e){
+        } catch (Exception e) {
             driver.findElement(By.xpath(cssOrXpath)).sendKeys(text);
         }
     }
-    public void hoverOverNPOM(String cssOrXpath){
+
+    public void hoverOverNPOM(String cssOrXpath) {
         Actions actions = new Actions(driver);
         try {
             WebElement element = driver.findElement(By.cssSelector(cssOrXpath));
             actions.moveToElement(element).build().perform();
-        }catch (Exception e){
+        } catch (Exception e) {
             WebElement element = driver.findElement(By.xpath(cssOrXpath));
             actions.moveToElement(element).build().perform();
         }
     }
-    public void selectDropdownOptionNPOM(String cssOrXpath, String option){
+
+    public void selectDropdownOptionNPOM(String cssOrXpath, String option) {
         try {
             WebElement dropdown = driver.findElement(By.cssSelector(cssOrXpath));
             Select select = new Select(dropdown);
             try {
                 select.selectByValue(option);
-            }catch (Exception e){
+            } catch (Exception e) {
                 select.selectByVisibleText(option);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             WebElement dropdown = driver.findElement(By.xpath(cssOrXpath));
             Select select = new Select(dropdown);
             try {
                 select.selectByValue(option);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 select.selectByVisibleText(option);
             }
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //reusable methods (page object model methods)
     //------------------------------------------------------------------------------------------------------------------
-    public String getElementText(WebElement element){
+    public String getElementText(WebElement element) {
         return element.getText();
     }
-    public void clickOn(WebElement element){
+
+    public void clickOn(WebElement element) {
         element.click();
     }
-    public void type(WebElement element, String text){
+
+    public void type(WebElement element, String text) {
         element.sendKeys(text);
     }
-    public void hoverOver(WebElement element){
+
+    public void hoverOver(WebElement element) {
         Actions actions = new Actions(driver);
-            actions.moveToElement(element).build().perform();
-    }
-    public void selectDropdownOption(WebElement element, String option){
-        Select select = new Select(element);
-        try {
-            select.selectByValue(option);
-        }catch (Exception e){
-            select.selectByValue(option);
-        }
+        actions.moveToElement(element).build().perform();
     }
 }
+
+//    public void selectDropdownOption(String element, String option){
+//        Select select = new Select(element);
+//        try {
+//            select.selectByValue(option);
+//        }catch (Exception e){
+//            select.selectByValue(option);
+//        }
+//    }
+//}

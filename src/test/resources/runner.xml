@@ -10,13 +10,16 @@
     <parameter name="os_version" value="Big Sur"></parameter>
     <parameter name="browser_version" value="110"></parameter>
 <!--local & cloud parameters-->
-    <parameter name="url" value="http://www.saucedemo.com"></parameter>
-    <parameter name="browserName" value="edge"></parameter>
+    <parameter name="url" value="http://www.demoblaze.com"></parameter>
+    <parameter name="browserName" value="firefox"></parameter>
 
     <test name="login sauce demo test">
         <classes>
-            <class name="saucedemotest.ValidLoginTest"></class>
-            <class name="saucedemotest.InvalidLoginTest"></class>
+            <class name="demoblazetest.SignupPageTest"></class>
+            <class name="demoblazetest.LoginPageTest"></class>
+            <class name="demoblazetest.InvalidPasswordTest"></class>
+            <class name="demoblazetest.AddProductTest"></class>
+            <class name="demoblazetest.CheckoutPageTest"></class>
         </classes>
     </test>
 </suite>
