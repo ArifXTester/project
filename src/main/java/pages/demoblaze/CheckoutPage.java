@@ -26,13 +26,10 @@ public class CheckoutPage extends CommonAPI {
 
     @FindBy(partialLinkText = "Add to cart")
     WebElement addCart;
-
     @FindBy(partialLinkText = "Home")
     WebElement Home;
-
     @FindBy(id = "cartur")
     WebElement Cart;
-
     @FindBy(partialLinkText = "Place Order")
     WebElement PlaceOrder;
 

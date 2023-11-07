@@ -9,7 +9,6 @@ import pages.demoblaze.CheckoutPage;
 
 import java.time.Duration;
 
-
 public class CheckoutPageTest extends CommonAPI {
     CheckoutPage checkoutPage = new CheckoutPage(getDriver());
     Logger LOG = LogManager.getLogger(CheckoutPageTest.class.getName());

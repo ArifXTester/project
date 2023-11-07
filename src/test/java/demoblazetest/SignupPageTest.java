@@ -27,7 +27,6 @@ public class SignupPageTest extends CommonAPI {
         //Enter username and password
         signUpPage.typeUsername(name);
         signUpPage.typePassword(pass);
-
         // Click the signup button
         signUpPage.clickOnSignupBtn();
     }

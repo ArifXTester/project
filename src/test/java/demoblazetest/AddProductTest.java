@@ -9,11 +9,11 @@ import pages.demoblaze.CheckoutPage;
 public class AddProductTest extends CommonAPI {
     Logger LOG = LogManager.getLogger(AddProductTest.class.getName());
     CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-
     @Test
     public void addProduct(){
         checkoutPage.SamsungPhone();
         checkoutPage.addToCart();
         checkoutPage.confirmOK();
+
     }
 }

@@ -17,7 +17,6 @@ public class LoginPageTest extends CommonAPI {
     Logger LOG = LogManager.getLogger(LoginPageTest.class.getName());
     String user = prop.getProperty("demouser");
     String pw = prop.getProperty("demopass");
-
     @Test
     public void loginWithValidCredentials() {
 

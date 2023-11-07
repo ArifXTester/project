@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 import pages.demoblaze.SignUpPage;
-
 public class InvalidPasswordTest extends CommonAPI {
     Logger LOG = LogManager.getLogger(InvalidPasswordTest.class.getName());
     String name = prop.getProperty("demouser");
@@ -20,7 +19,6 @@ public class InvalidPasswordTest extends CommonAPI {
         //Enter username and password
         signUpPage.typeUsername(name);
         signUpPage.typePassword(password);
-
         // Click the signup button
         signUpPage.clickOnSignupBtn();
     }

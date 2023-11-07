@@ -10,13 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends CommonAPI {
     Logger LOG = (Logger) LogManager.getLogger(LoginPage.class.getName());
-
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
     @FindBy(id="loginusername")
     WebElement logUser;
-
     @FindBy(id="loginpassword")
     WebElement logPassword;
 
