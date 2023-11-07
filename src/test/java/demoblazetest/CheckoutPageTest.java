@@ -12,18 +12,18 @@ import java.time.Duration;
 
 
 public class CheckoutPageTest extends CommonAPI {
-
+    CheckoutPage checkoutPage = new CheckoutPage(getDriver());
     Logger LOG = LogManager.getLogger(CheckoutPageTest.class.getName());
     String username = prop.getProperty("demouser");
-    String password = prop.getProperty("demopass");
-
+    String country = prop.getProperty("demoCountry");
+    String city = prop.getProperty("demoCity");
+    String card = prop.getProperty("demoCard");
+    String month = prop.getProperty("demoMonth");
+    String year = prop.getProperty("demoYear");
 
     @Test
-    public void addToCart(){
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-
+    public void addToCart() {
         checkoutPage.SamsungPhone();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         checkoutPage.addToCart();
         checkoutPage.confirmOK();
         checkoutPage.goHome();
@@ -33,11 +33,14 @@ public class CheckoutPageTest extends CommonAPI {
         checkoutPage.clickCart();
         checkoutPage.PlaceOrderClick();
     }
-@Test
-    public void EnterPaymentInfo(){
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-        checkoutPage.sendDetails();
+    @Test
+            public void fillForm(){
+        checkoutPage.FormName(username);
+        checkoutPage.FormCountry(country);
+        checkoutPage.FormCity(city);
+        checkoutPage.FormCC(card);
+        checkoutPage.FormMonth(month);
+        checkoutPage.FormYear(year);
         checkoutPage.SubmitBtn();
     }
     @Test
@@ -47,6 +50,4 @@ public class CheckoutPageTest extends CommonAPI {
         Assert.assertEquals(checkoutPage.getSuccessMsg(), "Thank you for your purchase!");
         logger.info("Verifying Purchase Page without entering any order details");
     }
-
-
 }

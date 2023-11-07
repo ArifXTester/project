@@ -11,15 +11,11 @@ import pages.LoginPage;
 import utility.Utility;
 
 public class SignUpPage extends CommonAPI {
-    Logger LOG = LogManager.getLogger(HomePage.class.getName());
-//    public SignUpPage(WebDriver driver){
-//        PageFactory.initElements(driver, this);
-//    }
-
-    public SignUpPage() {
-        PageFactory.initElements(driver, this);
+    Logger LOG = LogManager.getLogger(SignUpPage.class.getName());
+    public SignUpPage(WebDriver driver){PageFactory.initElements(driver, this);
     }
-
+    @FindBy(id = "signin2")
+    WebElement SignBtn;
     @FindBy(id = "sign-username")
     WebElement sUsername;
 
@@ -29,6 +25,9 @@ public class SignUpPage extends CommonAPI {
     @FindBy(xpath = "//button[text()='Sign up']")
     WebElement signUpBtn;
 
+    public void ClickSignInBtn(){
+        SignBtn.click();
+    }
     public void typeUsername(String username){
         type(sUsername, username);
         LOG.info("type username success");
@@ -38,15 +37,8 @@ public class SignUpPage extends CommonAPI {
         LOG.info("type password success");
     }
 
-
-    public void signUp(String un, String pwd)
-    {
-
-        Utility.sendKeys(driver, sUsername, un);
-        Utility.sendKeys(driver, sPassword, pwd);
-    }
-    public void clickOnLoginBtn() {
-        clickOn(signUpBtn);
+    public void clickOnSignupBtn() {
+        signUpBtn.click();
         LOG.info("click on login button success");
     }
 }

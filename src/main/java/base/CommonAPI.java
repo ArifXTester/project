@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -234,7 +233,7 @@ public class CommonAPI {
         Actions actions = new Actions(driver);
             actions.moveToElement(element).build().perform();
     }
-    public void selectDropdownOption(WebElement element, String option){
+    public void selectDropdownOption(String element, String option){
         Select select = new Select(element);
         try {
             select.selectByValue(option);

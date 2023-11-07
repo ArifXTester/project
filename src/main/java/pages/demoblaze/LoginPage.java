@@ -1,17 +1,19 @@
 package pages.demoblaze;
 
 import base.CommonAPI;
-import jdk.jshell.execution.Util;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utility.Utility;
 
 public class LoginPage extends CommonAPI {
-    Logger LOG = LogManager.getLogger(pages.LoginPage.class.getName());
+    Logger LOG = (Logger) LogManager.getLogger(LoginPage.class.getName());
+
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
     @FindBy(id="loginusername")
     WebElement logUser;
 
@@ -36,8 +38,7 @@ public class LoginPage extends CommonAPI {
         clickOn(loginButton);
         LOG.info("click on login button success");
     }
-    public void clickOnClose()
-    {
+    public void clickOnClose() {
         closeButton.click();
     }
 }
