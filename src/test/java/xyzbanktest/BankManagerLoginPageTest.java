@@ -18,18 +18,23 @@ public class BankManagerLoginPageTest extends CommonAPI {
     public void BankManagerLogin() {
         bankManagerLoginPage.BankManagerLogin();
     }
+    @Test
     public void addCustomerBtn(){
         bankManagerLoginPage.addCustomerBtn();
     }
+    @Test
     public void enterUserName(){
         bankManagerLoginPage.enterUserName(firstname);
     }
+    @Test
     public void enterLastName(){
         bankManagerLoginPage.enterLastName(lastname);
     }
+    @Test
     public void enterPostCode(){
         bankManagerLoginPage.enterPostCode(post);
     }
+    @Test
     public void clickSubmitBtn(){
         bankManagerLoginPage.clickSubmitBtn();
     }

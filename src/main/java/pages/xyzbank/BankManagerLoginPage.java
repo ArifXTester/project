@@ -45,13 +45,11 @@ public class BankManagerLoginPage extends CommonAPI {
         LOG.info("type first name success");
     }
 
-    public void enterPassword(String enterLastName){
+    public void enterLastName(String enterLastName){
         type(lastName, enterLastName);
     }
 
-
-
-public void enterPostCode(string zipcode) {
+public void enterPostCode(String zipcode) {
     type(postCode, zipcode);
 }
 
@@ -64,8 +62,6 @@ public void enterPostCode(string zipcode) {
     public void getConfirmation(String confirm) {
         confirm = driver.switchTo().alert().getText();
     }
-
-
 }
 
 
