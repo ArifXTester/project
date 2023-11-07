@@ -69,16 +69,5 @@ public class registerPage extends CommonAPI {
     }
 
 
-    public void selectDay() {
-        Select selectDay = new Select(driver.findElement(By.name("DateOfBirthDay")));
-
-    }
-    public void selectMonth() {
-        Select selectMonth = new Select(driver.findElement(By.name("DateOfBirthMonth")));
-    }
-    public void selectYear() {
-        Select selectYear = new Select(driver.findElement(By.name("DateOfBirthYear")));
-    }
-
 
 }
