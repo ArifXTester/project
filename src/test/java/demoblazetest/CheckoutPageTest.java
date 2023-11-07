@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.demoblaze.CheckoutPage;
-import saucedemotest.ValidLoginTest;
 
 import java.time.Duration;
 

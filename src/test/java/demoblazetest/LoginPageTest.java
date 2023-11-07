@@ -6,9 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.demoblaze.LoginPage;
-import saucedemotest.ValidLoginTest;
 import utility.ExcelReader;
 import utility.Utility;
 
