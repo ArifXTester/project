@@ -1,4 +1,4 @@
 package pages.nopCommerce;
 
-public class registerPage {
+public class checkoutPage {
 }
