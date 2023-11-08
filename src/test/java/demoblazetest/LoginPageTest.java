@@ -19,8 +19,6 @@ public class LoginPageTest extends CommonAPI {
     String pw = prop.getProperty("demopass");
     @Test
     public void loginWithValidCredentials() {
-
-
         loginPage.typeUser(user);
         loginPage.typePassword(pw);
         loginPage.clickOnLoginBtn();
