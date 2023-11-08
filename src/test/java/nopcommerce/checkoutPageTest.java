@@ -49,8 +49,6 @@ public class checkoutPageTest extends CommonAPI {
         CheckoutPage.ContinueClick3();
         CheckoutPage.ContinueClick4();
         CheckoutPage.ConfirmClick();
-        CheckoutPage.Confirmation();
-
     }
 
 

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends CommonAPI {
 
-    Logger LOG = LogManager.getLogger(pages.HomePage.class.getName());
+    Logger LOG = LogManager.getLogger(HomePage.class.getName());
     public HomePage(WebDriver driver)
     {
         PageFactory.initElements(this.driver, this);
